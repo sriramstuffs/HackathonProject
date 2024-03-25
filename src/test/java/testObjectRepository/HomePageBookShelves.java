@@ -6,14 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/***********************************************************************************
-*                                                                                  *
-* Class Name     : HomePageBookShelves                                             * 
-* Description    : To Get all the web elements present in the website              *
-* 				   and to return the same.                                         *
-*                                                                                  *
-************************************************************************************/
-
 public class HomePageBookShelves {
 
 	public static WebElement element = null;
@@ -51,7 +43,7 @@ public class HomePageBookShelves {
 		
 	}
 	
-	public static WebElement strogeFilter(WebDriver driver) {
+	public static WebElement storageFilter(WebDriver driver) {
 		
 		element = driver.findElement(By.xpath("//li[@data-group='storage type' and @class='item']"));
 		return element;

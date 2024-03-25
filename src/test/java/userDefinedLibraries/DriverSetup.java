@@ -6,14 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
-/***********************************************************************************
-*                                                                                  *
-* Class Name     : DriverSetup                                                     * 
-* Description    : To Create and Start the web driver and also Get the URL to test.*
-* 				   Also to close the driver.                                       *
-*                                                                                  *
-************************************************************************************/
-
 public class DriverSetup {
 
 	public static WebDriver driver;

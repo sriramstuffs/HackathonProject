@@ -53,7 +53,7 @@ public class DisplayBookshelves extends DriverSetup {
 	}
 
 	@Test(priority = 1, groups = { "Smoke Test one" })
-	public static void clickOnBookShelvesMenu() {
+	public static void clickOnBookShelvesMenu() throws InterruptedException {
 
 		logger = report.createTest("Display Bookshlves under Rs.15000");
 		logger.log(Status.INFO, "Display the name & price of first 3 Bookshelves below Rs. 15000, with Storage type as open & exclude out of stock");
@@ -71,19 +71,18 @@ public class DisplayBookshelves extends DriverSetup {
 
 		}
 
-		logger.log(Status.PASS, "PASSED");
-
 		action = new Actions(driver);
 		action.moveToElement(HomePageBookShelves.priceFilter(driver)).perform();
 		ExplicitWait.priceFilterVisibility(driver);
 		action.moveToElement(HomePageBookShelves.dragAndDropOfPrice(driver))
 				.dragAndDropBy(HomePageBookShelves.dragAndDropOfPrice(driver), -274, 0).perform();
-		action.moveToElement(HomePageBookShelves.strogeFilter(driver)).perform();
+		action.moveToElement(HomePageBookShelves.storageFilter(driver)).perform();
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
 		js1.executeScript("arguments[0].click()", HomePageBookShelves.openOfStroge(driver));
 		JavascriptExecutor js2 = (JavascriptExecutor) driver;
+		Thread.sleep(2000);
 		js2.executeScript("arguments[0].click()", HomePageBookShelves.excludingOutOfStock(driver));
-
+		Thread.sleep(2000);
 		bookShelves = new String[HomePageBookShelves.nameOfBookShelves(driver).size()];
 		prices = new String[HomePageBookShelves.priceOfBookShelves(driver).size()];
 
@@ -94,7 +93,7 @@ public class DisplayBookshelves extends DriverSetup {
 			prices[i] = prices[i].replaceAll("[^0-9]", "");
 
 		}
-
+		Thread.sleep(2000);
 		ExcelWrite.below15000BookShelves(bookShelves, prices, 3);
 		for (int i = 0; i < 3; i++) {
 
@@ -126,7 +125,7 @@ public class DisplayBookshelves extends DriverSetup {
 		bookShelves = new String[HomePageByAtHome.bookshelvesOfByAtHome(driver).size()];
 		prices = new String[HomePageByAtHome.priceOfByAtHome(driver).size()];
 
-		int x = HomePageByAtHome.bookshelves.size();
+		int x = HomePageByAtHome.bookshelves.size();	
 
 		for (int i = 0; i < x; i++) {
 
@@ -172,10 +171,10 @@ public class DisplayBookshelves extends DriverSetup {
 		HomePageGiftCards.findingAmount(driver).sendKeys("5000");
 		HomePageGiftCards.nextButton(driver).click();
 		HomePageGiftCards.recepientName(driver).sendKeys("abc");
-		HomePageGiftCards.recepientEmail(driver).sendKeys("abc@gmail.com");
+		HomePageGiftCards.recepientEmail(driver).sendKeys("abcgmail.com");
 		HomePageGiftCards.recepientMobile(driver).sendKeys("9876543210");
 		HomePageGiftCards.customerName(driver).sendKeys("cde");
-		HomePageGiftCards.customerEmail(driver).sendKeys("cdegmail.com");
+		HomePageGiftCards.customerEmail(driver).sendKeys("cde@gmail.com");
 		HomePageGiftCards.customerMobileNumber(driver).sendKeys("9876543210");
 		HomePageGiftCards.customerAddress(driver).sendKeys("116/2,Mettu Street,Chennai");
 		HomePageGiftCards.customerPincode(driver).sendKeys("600001");

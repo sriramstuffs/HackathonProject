@@ -5,7 +5,8 @@
     <classes>
       <class name="testScenarios.DisplayBookshelves">
         <methods>
-          <include name="clickOnBookShelvesMenu"/>
+          <include name="displayErrorMessage"/>
+          <include name="giftCard"/>
         </methods>
       </class> <!-- testScenarios.DisplayBookshelves -->
     </classes>
